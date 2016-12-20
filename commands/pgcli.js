@@ -4,18 +4,17 @@ const co = require('co')
 const cli = require('heroku-cli-util')
 
 function * run (context, heroku) {
+  const fetcher = require('heroku-pg/lib/fetcher')(heroku)
   const pgcli = require('../lib/pgcli')
-  const pg = require('heroku-pg')
 
-  let dbName = context.args.database || 'DATABASE_URL'
-  let db = yield pg.fetcher(heroku).database(context.app, context.args.database)
+  const {app, args} = context
 
-  cli.log(`Connecting to database ${cli.color.configVar(dbName)}...`)
+  let db = yield fetcher.database(app, args.database)
+  cli.console.error(`--> Connecting to ${cli.color.addon(db.attachment.addon.name)}`)
   yield pgcli.exec(db)
 }
 
-const cmd = {
-  topic: 'pg',
+let cmd = {
   description: 'open a pgcli shell to the database',
   help: 'defaults to DATABASE_URL databases if no database is specified',
   needsApp: true,
@@ -24,4 +23,7 @@ const cmd = {
   run: cli.command({preauth: true}, co.wrap(run))
 }
 
-exports.pgcli = Object.assign({command: 'pgcli'}, cmd)
+module.exports = [
+  Object.assign({topic: 'pg', command: 'pgcli'}, cmd),
+  Object.assign({topic: 'pgcli'}, cmd)
+]

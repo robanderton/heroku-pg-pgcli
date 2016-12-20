@@ -1,5 +1,3 @@
 'use strict'
 
-exports.commands = [
-  require('./commands/pgcli').pgcli
-]
+exports.commands = require('./commands/pgcli')

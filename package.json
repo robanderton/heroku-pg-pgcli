@@ -21,6 +21,18 @@
   "dependencies": {
     "co": "4.6.0",
     "heroku-cli-util": "6.0.16",
-    "heroku-pg": "1.0.8"
+    "heroku-pg": "2.0.9"
+  },
+  "devDependencies": {
+    "mocha": "3.1.2",
+    "nock": "9.0.2",
+    "nyc": "10.0.0",
+    "proxyquire": "1.7.10",
+    "sinon": "1.17.6",
+    "standard": "8.5.0",
+    "unexpected": "10.19.0"
+  },
+  "scripts": {
+    "test": "TZ=utc nyc mocha && standard"
   }
 }
