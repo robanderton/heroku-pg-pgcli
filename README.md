@@ -1,10 +1,23 @@
-# heroku-pg-pgcli
-[pgcli](http://pgcli.com) plugin for the [Heroku Toolbelt](https://toolbelt.heroku.com).
+# Pgcli Heroku CLI Plugin
 
-Install with ```heroku plugins:install git@github.com:chrisanderton/heroku-pg-pgcli.git```
+### Installation
 
-Run from within the Heroku app directory with ```heroku pg:pgcli``` (defaults to automatic login using the Heroku DATABASE_URL for the current app).
+`$ heroku plugins:install heroku-pg-pgcli`
 
-Optionally run with a specific database URL ```heroku pg:pgcli postgres://*```
+### Usage
 
-Needs pgcli to be available in the PATH.
+Open a pgcli shell to `DATABASE_URL` on the current app:
+
+`$ heroku pg:pgcli`
+
+Connect to a specific database for the current app:
+
+`$ heroku pg:pgcli HEROKU_POSTGRESQL_AQUA_URL`
+
+Specify an app name:
+
+`$ heroku pg:pgcli -a <app-name>`
+
+### Requirements
+
+[Pgcli](http://pgcli.com) **version 1.4.0** or newer must be [installed](http://pgcli.com/install) and available in the `$PATH`.
