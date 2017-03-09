@@ -74,7 +74,7 @@ describe('pgcli', () => {
       let onHandler = function (key, data) {
         return Promise.resolve('result')
       }
-      cp.expects('spawn').withExactArgs('pgcli', [], opts).once().returns(
+      cp.expects('spawn').withExactArgs('pgcli', ['--prompt', 'myapp::DATABASE=> '], opts).once().returns(
         {
           stdout: {
             on: onHandler
@@ -97,7 +97,7 @@ describe('pgcli', () => {
       let onHandler = function (key, data) {
         return Promise.resolve('result')
       }
-      cp.expects('spawn').withArgs('pgcli', []).once().returns(
+      cp.expects('spawn').withArgs('pgcli', ['--prompt', 'myapp::DATABASE=> ']).once().returns(
         {
           stdout: {
             on: onHandler
