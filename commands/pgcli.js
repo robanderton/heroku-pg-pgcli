@@ -16,7 +16,7 @@ function * run (context, heroku) {
 
 let cmd = {
   description: 'open a pgcli shell to the database',
-  help: 'defaults to DATABASE_URL databases if no database is specified',
+  help: 'defaults to DATABASE_URL if no database is specified',
   needsApp: true,
   needsAuth: true,
   args: [{name: 'database', optional: true}],
