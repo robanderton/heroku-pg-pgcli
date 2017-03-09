@@ -1,6 +1,6 @@
 {
   "name": "heroku-pg-pgcli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Rob Anderton (@robanderton)",
   "description": "Heroku CLI plugin for the pgcli Postgres command line interface",
   "homepage": "https://github.com/robanderton/heroku-pg-pgcli",
