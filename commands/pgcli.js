@@ -7,9 +7,11 @@ function * run (context, heroku) {
   const fetcher = require('heroku-pg/lib/fetcher')(heroku)
   const pgcli = require('../lib/pgcli')
 
-  const {app, args} = context
+  const {app, args, flags} = context
 
-  let db = yield fetcher.database(app, args.database)
+  let namespace = flags.credential ? `credential:${flags.credential}` : null
+
+  let db = yield fetcher.database(app, args.database, namespace)
   cli.console.error(`--> Connecting to ${cli.color.addon(db.attachment.addon.name)}`)
   yield pgcli.exec(db)
 }
@@ -20,6 +22,7 @@ let cmd = {
   needsApp: true,
   needsAuth: true,
   args: [{name: 'database', optional: true}],
+  flags: [{name: 'credential', description: 'credential to use', hasValue: true}],
   run: cli.command({preauth: true}, co.wrap(run))
 }
 

@@ -42,7 +42,7 @@ describe('pgcli', () => {
   it('runs pgcli', sinon.test(() => {
     let pgcli = require('../../lib/pgcli')
     sinon.stub(pgcli, 'exec').returns(Promise.resolve(''))
-    return cmd.run({args: {}})
+    return cmd.run({args: {}, flags: {}})
     .then(() => expect(cli.stdout, 'to equal', ''))
     .then(() => expect(cli.stderr, 'to equal', '--> Connecting to postgres-1\n'))
     .then(() => pgcli.exec.restore())
