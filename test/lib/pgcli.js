@@ -63,7 +63,7 @@ describe('pgcli', () => {
     it('runs pgcli', sinon.test(() => {
       let env = Object.assign({}, process.env, {
         PGAPPNAME: 'pgcli',
-        PGSSLMODE: 'prefer',
+        PGSSLMODE: 'require',
         PGUSER: 'username',
         PGPASSWORD: 'pass',
         PGDATABASE: 'mydb',
