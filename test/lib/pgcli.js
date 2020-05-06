@@ -15,7 +15,8 @@ const db = {
     addon: {
       name: 'postgres-1'
     },
-    config_vars: ['DATABASE_URL'],
+    name: 'DATABASE',
+    //config_vars: ['DATABASE_URL'],
     app: {name: 'myapp'}
   }
 }
@@ -33,6 +34,7 @@ const bastionDb = {
     addon: {
       name: 'postgres-1'
     },
+    name: 'DATABASE',
     config_vars: ['DATABASE_URL'],
     app: {name: 'myapp'}
   }
@@ -41,11 +43,11 @@ const bastionDb = {
 const proxyquire = require('proxyquire')
 var tunnelStub = sinon.stub().callsArg(1)
 
-const bastion = proxyquire('heroku-pg/lib/bastion', {
+const bastion = proxyquire('@heroku-cli/plugin-pg-v5/lib/bastion', {
   'tunnel-ssh': tunnelStub
 })
 const pgcli = proxyquire('../../lib/pgcli', {
-  'heroku-pg/lib/bastion': bastion
+  '@heroku-cli/plugin-pg-v5/lib/bastion': bastion
 })
 
 describe('pgcli', () => {
@@ -60,7 +62,7 @@ describe('pgcli', () => {
   })
 
   describe('exec', () => {
-    it('runs pgcli', sinon.test(() => {
+    it('runs pgcli', () => {
       let env = Object.assign({}, process.env, {
         PGAPPNAME: 'pgcli',
         PGSSLMODE: 'require',
@@ -83,8 +85,8 @@ describe('pgcli', () => {
         }
       )
       pgcli.exec(db)
-    }))
-    it('opens an SSH tunnel and runs pgcli for bastion databases', sinon.test(() => {
+    })
+    it('opens an SSH tunnel and runs pgcli for bastion databases', () => {
       let tunnelConf = {
         username: 'bastion',
         host: 'bastion-host',
@@ -108,6 +110,6 @@ describe('pgcli', () => {
       pgcli.exec(bastionDb)
       .then(() => expect(
         tunnelStub.withArgs(tunnelConf).calledOnce, 'to equal', true))
-    }))
+    })
   })
 })
