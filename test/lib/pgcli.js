@@ -16,8 +16,8 @@ const db = {
       name: 'postgres-1'
     },
     name: 'DATABASE',
-    //config_vars: ['DATABASE_URL'],
-    app: {name: 'myapp'}
+    config_vars: ['DATABASE_URL'],
+    app: { name: 'myapp' }
   }
 }
 
@@ -36,7 +36,7 @@ const bastionDb = {
     },
     name: 'DATABASE',
     config_vars: ['DATABASE_URL'],
-    app: {name: 'myapp'}
+    app: { name: 'myapp' }
   }
 }
 
@@ -72,7 +72,7 @@ describe('pgcli', () => {
         PGPORT: 5432,
         PGHOST: 'localhost'
       })
-      let opts = {env: env, stdio: 'inherit'}
+      let opts = { env: env, stdio: 'inherit' }
       let onHandler = function (key, data) {
         return Promise.resolve('result')
       }
@@ -108,8 +108,7 @@ describe('pgcli', () => {
         }
       )
       pgcli.exec(bastionDb)
-      .then(() => expect(
-        tunnelStub.withArgs(tunnelConf).calledOnce, 'to equal', true))
+        .then(() => expect(tunnelStub.withArgs(tunnelConf).calledOnce, 'to equal', true))
     })
   })
 })
