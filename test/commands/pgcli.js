@@ -18,7 +18,7 @@ const db = {
       name: 'postgres-1'
     },
     config_vars: ['DATABASE_URL'],
-    app: {name: 'myapp'}
+    app: { name: 'myapp' }
   }
 }
 
@@ -27,7 +27,7 @@ const fetcher = () => ({
 })
 
 const cmd = proxyquire('../../commands/pgcli', {
-  'heroku-pg/lib/fetcher': fetcher
+  '@heroku-cli/plugin-pg-v5/lib/fetcher': fetcher
 })[0]
 
 describe('pgcli', () => {
@@ -39,12 +39,12 @@ describe('pgcli', () => {
     expect(cmd.needsApp, 'to equal', true)
   })
 
-  it('runs pgcli', sinon.test(() => {
+  it('runs pgcli', () => {
     let pgcli = require('../../lib/pgcli')
     sinon.stub(pgcli, 'exec').returns(Promise.resolve(''))
-    return cmd.run({args: {}, flags: {}})
+    return cmd.run({ args: {}, flags: {} })
     .then(() => expect(cli.stdout, 'to equal', ''))
     .then(() => expect(cli.stderr, 'to equal', '--> Connecting to postgres-1\n'))
     .then(() => pgcli.exec.restore())
-  }))
+  })
 })

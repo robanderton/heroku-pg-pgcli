@@ -2,9 +2,9 @@
 
 const co = require('co')
 const cli = require('heroku-cli-util')
-const pg = require('@heroku-cli/plugin-pg-v5')
 
 function * run (context, heroku) {
+  const fetcher = require('@heroku-cli/plugin-pg-v5/lib/fetcher')(heroku)
   const pgcli = require('../lib/pgcli')
 
   const {app, args, flags} = context
@@ -13,7 +13,7 @@ function * run (context, heroku) {
 
   let db
   try {
-    db = yield pg.fetcher(heroku).database(app, args.database, namespace)
+    db = yield fetcher.database(app, args.database, namespace)
   } catch (err) {
     if (namespace && err.message === `Couldn't find that addon.`) {
       throw new Error(`Credential doesn't match, make sure credential is attached`)
