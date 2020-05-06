@@ -1,6 +1,6 @@
 {
   "name": "heroku-pg-pgcli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": "Rob Anderton (@robanderton)",
   "description": "Heroku CLI plugin for the pgcli Postgres command line interface",
   "homepage": "https://github.com/robanderton/heroku-pg-pgcli",
@@ -24,10 +24,10 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "@heroku-cli/plugin-pg-v5": "^7.40.0",
     "co": "^4.6.0",
-    "printf": "0.5.1",
     "heroku-cli-util": "^8.0.11",
-    "@heroku-cli/plugin-pg-v5": "^7.40.0"
+    "printf": "0.5.1"
   },
   "devDependencies": {
     "mocha": "^5.1.1",
