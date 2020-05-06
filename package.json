@@ -25,18 +25,19 @@
   "license": "ISC",
   "dependencies": {
     "co": "^4.6.0",
-    "heroku-cli-util": "^6.2.0",
-    "heroku-pg": "^2.4.0"
+    "printf": "0.5.1",
+    "heroku-cli-util": "^8.0.11",
+    "@heroku-cli/plugin-pg-v5": "^7.40.0"
   },
   "devDependencies": {
-    "mocha": "^3.4.2",
-    "nock": "^9.0.13",
-    "np": "^2.16.0",
-    "nyc": "^11.0.3",
-    "proxyquire": "^1.8.0",
-    "sinon": "<2",
-    "standard": "^10.0.2",
-    "unexpected": "^10.29.0"
+    "mocha": "^5.1.1",
+    "nock": "^9.2.6",
+    "np": "^2.20.1",
+    "nyc": "^11.9.0",
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.2.3",
+    "standard": "^12.0.1",
+    "unexpected": "^11.0.1"
   },
   "scripts": {
     "release": "np",
