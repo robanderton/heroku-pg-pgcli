@@ -2033,7 +2033,7 @@ he@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-heroku-cli-util@^8.0.11, heroku-cli-util@^8.0.9:
+heroku-cli-util@^8.0.11, heroku-cli-util@^8.0.12, heroku-cli-util@^8.0.9:
   version "8.0.12"
   resolved "https://registry.yarnpkg.com/heroku-cli-util/-/heroku-cli-util-8.0.12.tgz#a2a13126095887c16afc01e3ac0f7816ddbe2a05"
   integrity sha512-63wB17oSktlA/HzpIV/PGe8Isq5AZArT51KAW1gg54zyYRIiHOwXik93HZuuRVUaVrWvVUhItFeLgqMwAwlTsw==

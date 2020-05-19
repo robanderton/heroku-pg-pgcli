@@ -26,7 +26,7 @@
   "dependencies": {
     "@heroku-cli/plugin-pg-v5": "^7.40.0",
     "co": "^4.6.0",
-    "heroku-cli-util": "^8.0.11",
+    "heroku-cli-util": "^8.0.12",
     "printf": "0.5.1"
   },
   "devDependencies": {
